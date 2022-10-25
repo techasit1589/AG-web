@@ -1,0 +1,54 @@
+<div id="login">
+    <br>
+    <div class="container-sm">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6 bg-light rounded">
+                <div id="login-box" class="col-md-12  ">
+                    <form (ngSubmit)="onSubmitEmailPassword()" [formGroup]="loginForm">
+
+                        <h3 class="text-center text-dark " style="margin-top: 10px;">ลงชื่อเข้าใช้</h3>
+                        <div class="form-group">
+                            <label for="Username" class="text-dark">Email address</label><br>
+                            <input type="email" formControlName="inputEmail" [(ngModel)]="email" required  placeholder="@email" class="form-control">
+                        </div>
+                        <div class="form-text text-danger"
+            *ngIf="loginForm.get('inputEmail').invalid && loginForm.get('inputEmail').errors.required">
+            กรุณาระบุอีเมล์ชื่อผู้ใช้
+        </div>
+        <div class="form-text text-danger"
+            *ngIf="loginForm.get('inputEmail').invalid && loginForm.get('inputEmail').errors.email">
+            ชื่อผู้ใช้ควรจะเป็นอีเมล์
+        </div>
+                        <div class="form-group">
+                            <label for="Password" class="text-dark">Password</label><br>
+                            <input type="password" formControlName="inputPassword" [(ngModel)]="password" required  placeholder="รหัสผ่าน" class="form-control">
+                        </div>
+                        <div class="form-text text-danger"
+            *ngIf="loginForm.get('inputPassword')?.invalid && (loginForm.get('inputPassword')?.dirty || loginForm.get('inputPassword')?.touched) && loginForm.get('inputPassword')?.errors?.required">
+            กรุณาระบุพาสเวิร์ด
+        </div>
+        <div class="form-text text-danger"
+            *ngIf="loginForm.get('inputPassword')?.invalid && (loginForm.get('inputPassword')?.dirty || loginForm.get('inputPassword')?.touched) && loginForm.get('inputPassword')?.errors?.minlength">
+            6 ตัวขึ้นไป
+        </div>
+        <br>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="inputCheck">
+        <label class="form-check-label" for="inputCheck">จดจำฉัน</label>
+    </div>
+
+                        
+                        
+                        <div class="form-group">
+                            <input type="submit" class="form-control btn btn-dark btn-md " value="login">
+                        </div>
+                         <br>
+                     </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

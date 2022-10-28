@@ -1,86 +1,198 @@
-<div id="login">
-    <br>
-    <div class="container-sm">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6 bg-light rounded">
-                <div id="login-box" class="col-md-12  ">
-                    <form (ngSubmit)="onSubmitRegister()" [formGroup]="registerForm">
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+        <div class="container">
+            <div class="row gx-lg-5 align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h1 class="my-5 display-3 fw-bold ls-tight">
+                        สมัครสมาชิก <br />
+                        <span class="text-primary">ร้านอู่ซ่อมรถ</span>
+                    </h1>
+                    <p style="color: hsl(217, 10%, 50.8%)">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+                        quibusdam tempora at cupiditate quis eum maiores libero
+                        veritatis? Dicta facilis sint aliquid ipsum atque?
+                    </p>
+                </div>
 
-                        <h3 class="text-center text-dark " style="margin-top: 10px;">สมัครสมาชิก</h3>
-                        <div class="form-group">
-                            <label for="Username" class="text-dark">Email:</label><br>
-                            <input type="email" formControlName="inputEmail" [(ngModel)]="email" required  placeholder="@email" class="form-control">
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputEmail').invalid && registerForm.get('inputEmail').errors.required">
-                            กรุณาระบุอีเมล์ผู้ใช้
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputEmail').invalid && registerForm.get('inputEmail').errors.email">
-                            ชื่อผู้ใช้ควรจะเป็นอีเมล์
-                        </div>
-                        <div class="form-group">
-                            <label for="Password" class="text-dark">Password:</label><br>
-                            <input type="password" formControlName="inputPassword" [(ngModel)]="password" required  placeholder="รหัสผ่าน" class="form-control">
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputPassword')?.invalid && (registerForm.get('inputPassword')?.dirty || registerForm.get('inputPassword')?.touched) && registerForm.get('inputPassword')?.errors?.required">
-                            กรุณาระบุพาสเวิร์ด
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputPassword')?.invalid && (registerForm.get('inputPassword')?.dirty || registerForm.get('inputPassword')?.touched) && registerForm.get('inputPassword')?.errors?.minlength">
-                            6 ตัว
-                        </div>
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card">
+                        <div class="card-body py-5 px-md-5">
+                            <form (ngSubmit)="onSubmitRegister()" [formGroup]="registerForm">
+                                <!-- 2 column grid layout with text inputs for the first and last names -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <div style="width: 41%;">
+                                                <label for="Firstname" class="text-dark"><i class='far fa-user-circle'style="color: #078cfa; font-size: 20px;margin-right: 5px;"></i>Firstname</label>
+                                            </div>
+                                            <input type="text" formControlName="inputName" [(ngModel)]="name" required
+                                                placeholder="ชื่อจริง"
+                                                [ngClass]=" registerForm.get('inputName')?.invalid &&registerForm.get('inputName')?.dirty || registerForm.get('inputName')?.touched && registerForm.get('inputName')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
 
-                        <div class="form-group">
-                            <label for="Firstname" class="text-dark">Firstname:</label><br>
-                            <input type="text" formControlName="inputName" [(ngModel)]="name" required  placeholder="ชื่อจริง" class="form-control">
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputName')?.invalid && (registerForm.get('inputName')?.dirty || registerForm.get('inputName')?.touched) && registerForm.get('inputName')?.errors?.required">
-                            กรุณาระบุชื่อจริง
-                        </div>
-                        <div class="form-group">
-                            <label for="Lastname" class="text-dark">Lastname:</label><br>
-                            <input type="text" formControlName="inputSname" [(ngModel)]="sname" required  placeholder="นามสกุล" class="form-control">
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputSname')?.invalid && (registerForm.get('inputSname')?.dirty || registerForm.get('inputSname')?.touched) && registerForm.get('inputSname')?.errors?.required">
-                            กรุณาระบุนานสกุล
-                        </div>
-                        <div class="form-group">
-                            <label for="Address" class="text-dark">Address :</label><br>
-                            <input type="text" formControlName="inputAddress" [(ngModel)]="address" required  placeholder="ที่อยุ่" class="form-control">
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputAddress')?.invalid && (registerForm.get('inputAddress')?.dirty || registerForm.get('inputAddress')?.touched) && registerForm.get('inputAddress')?.errors?.required">
-                            กรุณาระบุที่อยู่
-                        </div>
-                        <div class="form-group">
-                            <label for="Tel" class="text-dark">Tel:</label><br>
-                            <input type="tel" pattern="[0-9]{10}" required formControlName="inputTel" [(ngModel)]="tel" required  placeholder="099-xxxxxxx" class="form-control" >
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputTel')?.invalid && (registerForm.get('inputTel')?.dirty || registerForm.get('inputTel')?.touched) && registerForm.get('inputTel')?.errors?.required">
-                            กรุณาระบุเบอร์โทร
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputTel')?.invalid && (registerForm.get('inputTel')?.dirty || registerForm.get('inputTel')?.touched) && registerForm.get('inputTel')?.errors?.minlength">
-                            10 ตัว
-                        </div>
-                        <div class="form-text text-danger"
-                            *ngIf="registerForm.get('inputTel')?.invalid && (registerForm.get('inputTel')?.dirty || registerForm.get('inputTel')?.touched) && registerForm.get('inputTel')?.errors?.maxlength">
-                            เกิน 10 ตัว
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <input type="submit" class="form-control btn btn-dark btn-md " value="สมัครสมาชิก">
-                        </div>
-                         <br>
-                     </form>
+                                        </div>
+                                        <div class="form-text text-danger"
+                                            *ngIf="registerForm.get('inputName')?.invalid && (registerForm.get('inputName')?.dirty || registerForm.get('inputName')?.touched) && registerForm.get('inputName')?.errors?.required">
+                                            กรุณาระบุชื่อจริง
+                                        </div>
+                                    </div>
 
+
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <div style="width: 10%;">
+                                                <label for="Lastname" class="text-dark">Lastname</label>
+                                            </div>
+                                            <input type="text" formControlName="inputSname" [(ngModel)]="sname" required
+                                                placeholder="นามสกุล"
+                                                [ngClass]=" registerForm.get('inputSname')?.invalid &&registerForm.get('inputSname')?.dirty || registerForm.get('inputSname')?.touched && registerForm.get('inputSname')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
+
+                                        </div>
+                                        <div class="form-text text-danger"
+                                            *ngIf="registerForm.get('inputSname')?.invalid && (registerForm.get('inputSname')?.dirty || registerForm.get('inputSname')?.touched) && registerForm.get('inputSname')?.errors?.required">
+                                            กรุณาระบุนานสกุล
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Email input -->
+                                <div class="form-outline mb-4">
+                                    <div style="width: 13%;">
+                                        <label for="Username" class="text-dark"><i class="material-icons"style="color: #078cfa; font-size: 20px;margin-right: 5px;">email</i>Email</label>
+                                    </div>
+                                    <input type="email" formControlName="inputEmail" [(ngModel)]="email" required
+                                        placeholder="User@Email.com"
+                                        [ngClass]="registerForm.get('inputEmail')?.invalid && registerForm.get('inputEmail')?.dirty || registerForm.get('inputEmail')?.touched && registerForm.get('inputEmail')?.errors?.required ? 'form-control is-invalid ' : 'form-control '">
+                                    <div class="form-text text-danger"
+                                        *ngIf="registerForm.get('inputEmail')?.invalid && (registerForm.get('inputEmail')?.dirty || registerForm.get('inputEmail')?.touched) && registerForm.get('inputEmail')?.errors?.required">
+                                        กรุณาระบุอีเมล์ผู้ใช้
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="registerForm.get('inputEmail').invalid && registerForm.get('inputEmail').errors.email">
+                                        ชื่อผู้ใช้ควรจะเป็นอีเมล์
+                                    </div>
+                                </div>
+
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <div style="width: 18%;">
+                                        <label for="Password" class="text-dark"><i class="material-icons" style="color: #078cfa; font-size: 20px;margin-right: 5px;">vpn_key</i>Password</label>
+                                    </div>
+                                    <input type="password" formControlName="inputPassword" [(ngModel)]="password"
+                                        required placeholder="รหัสผ่าน"
+                                        [ngClass]=" registerForm.get('inputPassword')?.invalid &&registerForm.get('inputPassword')?.dirty || registerForm.get('inputPassword')?.touched && registerForm.get('inputPassword')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
+                                    <div class="form-text text-danger"
+                                        *ngIf="registerForm.get('inputPassword')?.invalid && (registerForm.get('inputPassword')?.dirty || registerForm.get('inputPassword')?.touched) && registerForm.get('inputPassword')?.errors?.required">
+                                        กรุณาระบุพาสเวิร์ด
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="registerForm.get('inputPassword')?.invalid && (registerForm.get('inputPassword')?.dirty || registerForm.get('inputPassword')?.touched) && registerForm.get('inputPassword')?.errors?.minlength">
+                                        6 ตัวขึ้นไป
+                                    </div>
+                                </div>
+                                <!-- address input -->
+                                <div class="form-outline mb-4">
+                                    <div style="width: 17%;">
+                                        <label for="Address" class="text-dark"><i class="far fa-address-card" style="color: #078cfa; font-size: 20px;margin-right: 5px; "></i>Address</label>
+                                    </div>
+                                    <textarea placeholder="ระบุที่อยุ่" formControlName="inputAddress"
+                                        [(ngModel)]="address"
+                                        [ngClass]="registerForm.get('inputAddress')?.invalid&& (registerForm.get('inputAddress')?.dirty || registerForm.get('inputAddress')?.touched)&& registerForm.get('inputAddress')?.errors?.required ? 'form-control is-invalid ' : 'form-control '"
+                                        required rows="3"></textarea>
+                                    <div class="form-text text-danger"
+                                        *ngIf="registerForm.get('inputAddress')?.invalid && (registerForm.get('inputAddress')?.dirty || registerForm.get('inputAddress')?.touched) && registerForm.get('inputAddress')?.errors?.required">
+                                        กรุณาระบุที่อยู่
+                                    </div>
+                                </div>
+                                <!-- Tel input -->
+                                <div class="form-outline mb-4">
+                                    <div style="width: 8%;">
+                                        <label for="Tel" class="text-dark " style="margin: 0;"><i class="fa fa-mobile-phone" style="color: #078cfa; font-size: 20px;margin-right: 5px; "></i>Tel</label>
+                                    </div>
+                                    <input type="text" required formControlName="inputTel" [(ngModel)]="tel" required
+                                        placeholder="099-xxxxxxx"
+                                        [ngClass]=" registerForm.get('inputTel')?.invalid &&registerForm.get('inputTel')?.dirty || registerForm.get('inputTel')?.touched && registerForm.get('inputTel')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
+                                    <div class="form-text text-danger"
+                                        *ngIf="registerForm.get('inputTel')?.invalid && (registerForm.get('inputTel')?.dirty || registerForm.get('inputTel')?.touched) && registerForm.get('inputTel')?.errors?.required">
+                                        กรุณาระบุเบอร์โทร
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf=" registerForm.get('inputTel')?.invalid &&registerForm.get('inputTel')?.errors?.pattern">
+                                        ตัวเลขเท่านั้น
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf=" registerForm.get('inputTel')?.invalid && registerForm.get('inputTel')?.errors?.minlength &&!registerForm.get('inputTel')?.errors?.pattern">
+                                        ตัวเลข 10 ตัว
+                                    </div>
+                                    <div class="form-text text-danger"
+                                        *ngIf="  registerForm.get('inputTel')?.invalid && registerForm.get('inputTel')?.errors?.maxlength &&!registerForm.get('inputTel')?.errors?.pattern">
+                                        เกิน 10 ตัว
+                                    </div>
+                                </div>
+
+                                <!-- Checkbox -->
+                                <div class="form-check d-flex justify-content-center mb-4">
+                                    <input class="form-check-input me-2" type="checkbox" style="margin-right:5px;"
+                                        checked />
+                                    <label class="form-check-label">
+                                        ให้เราส่งข่าวสารไปที่ Email ของคุณ
+                                    </label>
+                                </div>
+
+                                <!-- Submit button -->
+                                <button type="submit" class="btn btn-primary btn-block mb-4">
+                                    สมัครสมาชิก
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- Jumbotron -->
+    <footer class="text-center text-white" style="background-color: #f1f1f1;">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://getbootstrap.com/">Bootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</section>
+<!-- Section: Design Block -->

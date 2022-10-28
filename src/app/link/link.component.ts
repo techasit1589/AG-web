@@ -5,10 +5,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-link',
   templateUrl: './link.component.html',
-  styleUrls: ['./link.component.css']
+  styleUrls: ['./link.component.css'],
 })
 export class LinkComponent implements OnInit {
-
   email: any;
   password: any;
   name: any;
@@ -17,39 +16,28 @@ export class LinkComponent implements OnInit {
   tel: any;
 
   registerForm: FormGroup | any;
-  
-  constructor() { 
+
+  constructor() {
     this.registerForm = new FormGroup({
-      inputEmail: new FormControl('', [
-        Validators.required,
-        Validators.email]),
+      inputEmail: new FormControl('', [Validators.required, Validators.email]),
       inputPassword: new FormControl('', [
         Validators.required,
-        Validators.minLength(6)
+        Validators.minLength(6),
       ]),
-      inputName: new FormControl('', [
-        Validators.required,
-        
-      ]),
-      inputSname: new FormControl('', [
-        Validators.required,
-        
-      ]),
-      inputAddress: new FormControl('', [
-        Validators.required,
-      ]),
+      inputName: new FormControl('', [Validators.required]),
+      inputSname: new FormControl('', [Validators.required]),
+      inputAddress: new FormControl('', [Validators.required]),
       inputTel: new FormControl('', [
         Validators.required,
+        Validators.pattern('^[0-9]*$'),
         Validators.minLength(10),
-        Validators.maxLength(10)
-      ])
+        Validators.maxLength(10),
+      ]),
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onSubmitRegister() {
-
     if (!this.registerForm.valid) {
       return;
     } else {
@@ -57,9 +45,8 @@ export class LinkComponent implements OnInit {
         title: 'ยินดีต้อนรับ',
         text: 'ลงทะเบียนสำเร็จ' + ' ' + this.email,
         icon: 'success',
-        confirmButtonText: 'ยืนยัน'
-      })
+        confirmButtonText: 'ยืนยัน',
+      });
     }
   }
-
 }

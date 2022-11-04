@@ -1,26 +1,121 @@
 <body>
     <div class="sidebar">
-        <a class="active" href="#home">แจ้งซ่อมรถ</a>
-        <a href="#">ชำระเงิน</a>
-        <a href="#">แจ้งชำระเงิน</a>
-        <a href="#">วันรับรถ</a>
+        <a class="active" href="test">แจ้งซ่อมรถ</a>
+        <a href="pay">ชำระเงิน</a>
+        <a href="notipay">สถานการซ่อม</a>
+        <a href="pickday">วันรับรถ</a>
     </div>
 
     <div class="content">
-        <div class="alert alert-warning" role="alert" style="margin-top: 10px;">
+        <!-- <div class="alert alert-warning" role="alert" style="margin-top: 10px;">
             กรุณาลงชื่อเข้าใช้ <a href="login" class="alert-link">เข้าสู่ระบบ</a>.
+        </div> -->
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card" style="margin-top: 10px;margin-bottom: 20px;">
+
+                <div class="card-body py-5 px-md-5">
+                    <h1>แจ้งซ่อมรถ</h1>
+                    <form (ngSubmit)="onSubmitPay()" [formGroup]="payForm">
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <div style="width: 41%;">
+                                        <label for="Firstname" class="text-dark"><i class='far fa-user-circle'
+                                                style="color: #078cfa; font-size: 20px;margin-right: 5px;"></i>Firstname</label>
+                                    </div>
+                                    <input type="text" formControlName="inputName" [(ngModel)]="name" required
+                                        placeholder="ชื่อจริง"
+                                        [ngClass]=" payForm.get('inputName')?.invalid &&payForm.get('inputName')?.dirty || payForm.get('inputName')?.touched && payForm.get('inputName')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
+
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="payForm.get('inputName')?.invalid && (payForm.get('inputName')?.dirty || payForm.get('inputName')?.touched) && payForm.get('inputName')?.errors?.required">
+                                    กรุณาระบุชื่อจริง
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <div style="width: 10%;">
+                                        <label for="Lastname" class="text-dark">Lastname</label>
+                                    </div>
+                                    <input type="text" formControlName="inputSname" [(ngModel)]="sname" required
+                                        placeholder="นามสกุล"
+                                        [ngClass]=" payForm.get('inputSname')?.invalid &&payForm.get('inputSname')?.dirty || payForm.get('inputSname')?.touched && payForm.get('inputSname')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
+
+                                </div>
+                                <div class="form-text text-danger"
+                                    *ngIf="payForm.get('inputSname')?.invalid && (payForm.get('inputSname')?.dirty || payForm.get('inputSname')?.touched) && payForm.get('inputSname')?.errors?.required">
+                                    กรุณาระบุนานสกุล
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- model input -->
+                        <div class="form-outline mb-4">
+                            <div style="width: 13%;">
+                                <label for="Username" class="text-dark"><i class="fas fa-car-side" style="color: #078cfa; font-size:20px;margin-right: 5px;"></i>รุ่นรถ</label>
+                            </div>
+                            <input type="email" formControlName="inputModel" [(ngModel)]="model" required style="max-width: 48.5%;"
+                                placeholder="Suzuki,Porsche,Nissan,Mitsubishi,MG"
+                                [ngClass]="payForm.get('inputModel')?.invalid && payForm.get('inputModel')?.dirty || payForm.get('inputModel')?.touched && payForm.get('inputModel')?.errors?.required ? 'form-control is-invalid ' : 'form-control '">
+                            <div class="form-text text-danger"
+                                *ngIf="payForm.get('inputModel')?.invalid && (payForm.get('inputModel')?.dirty || payForm.get('inputModel')?.touched) && payForm.get('inputModel')?.errors?.required">
+                                กรุณาระบุรุ่นรถ
+                            </div>
+                        </div>
+
+
+                        <!-- car registration input -->
+                        <div class="form-outline mb-4">
+                            <div style="width: 18%;">
+                                <label for="Password" class="text-dark">ทะเบียนรถ</label>
+                            </div>
+                            <input type="text" formControlName="inputRegistration" [(ngModel)]="registration" required style="max-width: 15%;"
+                                placeholder="กก-9999"
+                                [ngClass]=" payForm.get('inputRegistration')?.invalid &&payForm.get('inputRegistration')?.dirty || payForm.get('inputRegistration')?.touched && payForm.get('inputRegistration')?.errors?.required  ? 'form-control is-invalid ' : 'form-control '">
+                            <div class="form-text text-danger"
+                                *ngIf="payForm.get('inputRegistration')?.invalid && (payForm.get('inputRegistration')?.dirty || payForm.get('inputRegistration')?.touched) && payForm.get('inputRegistration')?.errors?.required">
+                                กรุณาระบุทะเบียนรถ
+                            </div>
+                        </div>
+
+                        <!-- info input -->
+                        <div class="form-outline mb-4">
+                            <div style="width: 25%;">
+                                <label for="Address" class="text-dark"><i class="fas fa-car-crash"
+                                        style="color: #078cfa; font-size: 20px;margin-right: 5px; "></i>แจ้งจุดซ่อม (ถ้ามี)</label>
+                            </div>
+                            <textarea placeholder="ระบุอาการ-จุดที่เสีย" formControlName="inputInfo" [(ngModel)]="info" class="form-control" required rows="3"></textarea>
+
+                        </div>
+
+                        <!-- fileimage input -->
+                        <div class="form-outline mb-4">
+                            <div style="width: 20%;">
+                                <label for="Tel" class="text-dark " style="margin: 0;"><i class="fa fa-file-image-o"
+                                        style="color: #078cfa; font-size: 20px;margin-right: 5px; "></i>รูปจุดที่เสีย (ถ้ามี)</label>
+                            </div>
+                            <input type="file" formControlName="inputFileimage" [(ngModel)]="fileimage" id="formFile" multiple
+                                class="form-control">
+                        </div>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                            ยืนยัน
+                        </button>
+
+                    </form>
+                </div>
+            </div>
         </div>
-        <h1>หน้าแจ้งซ่อมรถ</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur dicta quas in, ut suscipit cumque unde
-            perspiciatis dolore voluptatem corrupti iste omnis quo, vitae hic quis, exercitationem voluptate
-            necessitatibus id dolor praesentium. Tempora aliquid consequuntur, necessitatibus sunt, asperiores nam sit
-            voluptate impedit nisi ex adipisci atque hic fugit delectus omnis animi excepturi? Laboriosam ipsam delectus
-            dolorum harum suscipit quidem exercitationem soluta, eum deleniti amet nulla ex aliquid nobis eligendi nihil
-            laudantium quas praesentium aperiam voluptates repudiandae? Ut earum sint, in tempora laborum et, impedit
-            exercitationem voluptates quam blanditiis nobis? Nulla quisquam molestiae laboriosam minima atque provident
-            quibusdam eveniet iusto amet?</p>
-        <h3>Lorem ipsum dolor sit amet.</h3>
     </div>
+
+
+
+
     <footer class="text-center text-white" style="background-color: #f1f1f1;">
         <!-- Grid container -->
         <div class="container pt-4">

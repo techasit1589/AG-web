@@ -1,0 +1,101 @@
+<body>
+    <div class="sidebar">
+        <a href="test">แจ้งซ่อมรถ</a>
+        <a class="active" href="pay">ชำระเงิน</a>
+        <a href="notipay">สถานการซ่อม</a>
+        <a href="pickday">วันรับรถ</a>
+    </div>
+
+    <div class="content">
+        <!-- <div class="alert alert-warning" role="alert" style="margin-top: 10px;">
+            กรุณาลงชื่อเข้าใช้ <a href="login" class="alert-link">เข้าสู่ระบบ</a>.
+        </div> -->
+        
+        <div class="col-lg mb-5 mb-lg-0">
+            <div class="card" style="margin-top: 10px;">
+                <div class="card-body py-5 px-md-5">
+                    <h1>หน้าชำระเงิน</h1>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">คุณ</th>
+                            <th scope="col">รุ่นรถ</th>
+                            <th scope="col">ทะเบียนรถ</th>
+                            <th scope="col">ค่าซ่อม(บาท)</th>
+                            <th scope="col">ธนาคาร</th>
+                            <th scope="col">สถานชำระ</th>
+                            <th scope="col">ส่งหลักฐานการโอน</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Suzuki</td>
+                            <td>กก-1234</td>
+                            <td>5000</td>
+                            <td>ไทยพาณิชย์ <br> 401-9-123456-0</td>
+                            <td style="color: rgb(20, 95, 1);">ชำระแล้ว</td>
+                            <td><i style='font-size:24px;color: green;' class='far'>&#xf058;</i></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Mark</td>
+                            <td>MG</td>
+                            <td>ขข-9999</td>
+                            <td>3000</td>
+                            <td>ไทยพาณิชย์ <br> 401-9-123456-0</td>
+                            <td style="color: rgb(255, 0, 0);">รอชำระ</td>
+                            <td><button type="button" class="btn btn-primary" (click)="onSubmitday()">แนบสลิป</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <footer class="text-center text-white" style="background-color: #f1f1f1;">
+        <!-- Grid container -->
+        <div class="container pt-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                <!-- Github -->
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</body>

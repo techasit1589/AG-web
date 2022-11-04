@@ -8,6 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { LinkComponent } from './link/link.component';
 import { LoginComponent } from './login/login.component';
 import { TestComponent } from './test/test.component';
+import { PayComponent } from './pay/pay.component';
+import { NotipayComponent } from './notipay/notipay.component';
+import { PickDayComponent } from './pick-day/pick-day.component';
 
 
 @NgModule({
@@ -17,6 +20,9 @@ import { TestComponent } from './test/test.component';
     LinkComponent,
     LoginComponent,
     TestComponent,
+    PayComponent,
+    NotipayComponent,
+    PickDayComponent,
     
   ],
   imports: [
